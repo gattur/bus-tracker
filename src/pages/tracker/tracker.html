@@ -1,0 +1,35 @@
+
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+     Tracker
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+  
+  <div id="map">
+    <ion-row> 
+    <ion-col text-center>
+      <button ion-button (click)="calculateTime()">Calculate Time</button>
+    </ion-col>
+    <ion-col text-center>
+      <button ion-button (click)="driverDetails()">Driver details</button>
+    </ion-col>
+  </ion-row>
+  </div>
+    
+</ion-content>
+
+<ion-footer *ngIf="!internet">
+  <ion-navbar text-center>
+    Please Connect to Internet
+  </ion-navbar>
+</ion-footer>
+<ion-footer *ngIf="internet && lastUpdated" >
+  <ion-navbar text-center>
+    last updated {{lastUpdated}}
+  </ion-navbar>
+</ion-footer>

@@ -1,0 +1,64 @@
+
+<ion-header>
+  
+  <ion-navbar>
+    <ion-buttons left>
+        <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title text-center>{{student?.name }} details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <form [formGroup]="studentForm" (submit)="onSubmit()" *ngIf="isValid">
+    <ion-list>
+      <ion-item>  
+        <ion-label floating> Name </ion-label>
+        <ion-input type="text" formControlName="name" (ionChange)="checkChanges()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Bus Number</ion-label>
+        <ion-select  formControlName="busNo" (ionChange)="onChangeinBus()">
+      <ion-option *ngFor="let bus of buses" [value]="bus" >{{bus}}</ion-option>
+    </ion-select>
+      </ion-item>
+       <ion-item>
+         <ion-label floating> Pick Up Location </ion-label>
+        <ion-select  formControlName="pickUpArea" (ionChange)="checkChanges()">
+        <ion-option *ngFor="let location of locations" [value]="location">{{location}}</ion-option>
+        </ion-select>
+      </ion-item>
+       <ion-item >
+         <ion-label floating> Drop Location </ion-label>
+       <ion-select  formControlName="dropArea" (ionChange)="checkChanges()">
+        <ion-option *ngFor="let location of locations" [value]="location">{{location}}</ion-option>
+        </ion-select>
+        </ion-item>
+    </ion-list>
+      <ion-row>
+        <ion-col> 
+            <button type="submit" ion-button block *ngIf="isChanged" [disabled]="!studentForm.valid">Save Changes</button>
+        </ion-col>
+          <ion-col>
+             <button type="button" ion-button block *ngIf="isChanged" (click)="cancelChanges()">Cancel</button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+           <button type="button" ion-button block (click)="showOnMap()">Show On Map</button>
+        </ion-row>
+      
+  </form>
+
+</ion-content>
+
+<ion-footer *ngIf="!internet">
+  <ion-navbar text-center>
+    Please Connect to Internet
+  </ion-navbar>
+</ion-footer>

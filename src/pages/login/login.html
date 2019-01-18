@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>
+      Login
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="a-section">
+    <form #f="ngForm" (ngSubmit)="send(f)">
+      <div class="a-box">
+        <div class="a-box-inner a-padding-extra-large">
+          <ion-list no-lines>
+            <ion-item>
+              <ion-label>Phone Number</ion-label>
+            </ion-item>
+            <ion-item class="around-box">
+              <ion-input type="text" required ngModel name="pnumber" minlength="10" maxlength="10"></ion-input>
+            </ion-item>
+          </ion-list>
+          <button ion-button block [disabled]="!f.valid">Send OTP </button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+  {{internet}}
+
+</ion-content>
+
+<ion-footer *ngIf="!internet">
+  <ion-navbar text-center>
+    Please Connect to Internet
+  </ion-navbar>
+</ion-footer>

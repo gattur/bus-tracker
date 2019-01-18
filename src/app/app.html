@@ -1,0 +1,36 @@
+<ion-menu [content]="nav">
+
+
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title text-center>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+
+
+    <ion-content>
+        <ion-list>
+            <button ion-item icon-left (click)="onLoad(detailsPage)" *ngIf="isAuthenticated"> 
+             <ion-icon name="person"></ion-icon>
+            Details 
+        </button>
+            <button ion-item icon-left (click)="onLogout()" *ngIf="isAuthenticated"> 
+            <ion-icon name="log-out"></ion-icon>
+            Signout 
+        </button>
+            <button ion-item icon-left (click)="fakeSignIn()"> 
+            <ion-icon name="log-out"></ion-icon>
+            fakeSigin 
+        </button>
+            <ion-item>
+                <ion-icon name="logo-twitter" item-start></ion-icon>
+                Followers
+                <ion-badge item-end>260k</ion-badge>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #nav></ion-nav>
